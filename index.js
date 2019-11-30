@@ -1,16 +1,14 @@
 'use strict';
 
-const pug = require('pug');
+const os = require('os')
+const pug = require('pug')
 
 function createPugPlugin (compilation, type, options) {
   return function (node, ctx) {
-    // options.preData = config.data ? (config.data + os.EOL + node.content) : node.content;
+    if (options.prepend) node.content = options.prepend + os.EOL + node.content
     return new Promise ((resolve, reject) => {
-        var fn = pug.compile(node.content, options);
-        var html = fn({});
-        // node.compiled = {
-        //   code: html
-        // }
+        var fn = pug.compile(node.content, options)
+        var html = fn({})
         node.content = html
         resolve(node)
     });
