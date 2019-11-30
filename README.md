@@ -20,7 +20,10 @@ npm install @wepy/compiler-pug@git+https://github.com/Riant/wepy2-compiler-pug.g
 module.exports = {
   compilers: {
     pug: {
-      pretty: false
+      pretty: false,
+      // filename: 'pug',
+      // basedir: path.join(__dirname, 'src'),
+      // prepend: `include /assets/mixins`
     }
   }
 };
